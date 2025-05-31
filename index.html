@@ -8,75 +8,154 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bride & Groom Wedding</title>
+  <!-- Favicon: Wedding logo (interlocked rings) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='8' cy='16' r='4' stroke='%23DB2777' stroke-width='2' fill='%23fff'/%3E%3Ccircle cx='16' cy='16' r='4' stroke='%23FBB6CE' stroke-width='2' fill='%23fff'/%3E%3Cpath d='M12 16a4 4 0 0 1 4-4' stroke='%23DB2777' stroke-width='2' fill='none'/%3E%3C/svg%3E">
   <!-- Tailwind CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Remove the footer bar by hiding it */
+    footer {
+      display: none !important;
+    }
+    body {
+      min-height: 100vh;
+      min-width: 100vw;
+      background: #fff;
+    }
+    .main-bg {
+      background: url('wedding.jpg') top center repeat;
+      background-size: 100vw auto;
+      min-height: 100vh;
+      width: 100vw;
+      /* Remove margin-top so content is not shifted */
+    }
+    /* Overlay for readability */
+    .bg-overlay {
+      background: rgba(255, 255, 255, 0.19);
+      backdrop-filter: blur(0.5px);
+    }
+    @media (max-width: 640px) {
+      .main-bg {
+        background-size: 100vw auto;
+        background-position: top center;
+        background-repeat: repeat-y;
+        position: relative;
+      }
+      .main-bg::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(255,255,255,0.6); /* dim the image */
+        pointer-events: none;
+        z-index: 1;
+      }
+      .bg-overlay {
+        position: relative;
+        z-index: 2;
+      }
+    }
+    /* Custom scrollbar styles for aesthetic fit */
+    ::-webkit-scrollbar {
+      width: 10px;
+      background: #fce7f3; /* light pink */
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #fbb6ce 0%, #db2777 100%);
+      border-radius: 8px;
+      border: 2px solid #fff;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #db2777 0%, #fbb6ce 100%);
+    }
+    /* For Firefox */
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: #db2777 #fce7f3;
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans overflow-x-hidden">
+<body class="text-gray-900 font-sans overflow-x-hidden">
   <!-- Single column layout for all devices -->
-  <div>
-    <!-- Hero/Home Section (not sticky) -->
-    <section class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-pink-100 to-white p-6">
-      <h1 class="text-4xl sm:text-5xl font-bold mb-4 text-pink-700">Arundhati &amp; Nishit</h1>
-      <p class="text-lg mb-6">We're getting married!</p>
-      <div class="bg-white rounded-xl shadow-lg p-6 mb-6 w-full max-w-xs flex flex-col items-center">
-        <span class="text-gray-600 mb-2">Countdown to our big day:</span>
-        <div id="countdown" class="text-2xl font-mono text-pink-600">Loading...</div>
-      </div>
-      <p class="mt-4 text-base text-pink-700 font-semibold animate-bounce">Scroll down below for details</p>
-    </section>
-    <!-- Sticky header for all other sections -->
-    <header class="sticky top-0 z-40 bg-white text-center py-4 shadow-lg flex flex-col items-center">
-      <div class="flex items-center justify-center gap-2">
-        <span class="inline-block w-10 h-10">
-          <!-- Simple SVG wedding band icon -->
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="20" cy="25" rx="14" ry="8" fill="#FBB6CE" stroke="#DB2777" stroke-width="2"/>
-            <ellipse cx="20" cy="25" rx="10" ry="5" fill="#fff" stroke="#DB2777" stroke-width="1.5"/>
-            <circle cx="20" cy="13" r="4" fill="#FDE68A" stroke="#F59E42" stroke-width="2"/>
-            <ellipse cx="20" cy="25" rx="14" ry="8" fill="none" stroke="#DB2777" stroke-width="2"/>
-          </svg>
-        </span>
-        <div>
-          <h1 class="text-3xl font-bold tracking-wide text-pink-700">Arundhati &amp; Nishit</h1>
-          <p class="text-base mt-1 text-pink-700">We're getting married!</p>
-        </div>
-      </div>
-    </header>
-    <div class="space-y-12 pb-8">
-      <section class="px-4 animate-fadein pt-12">
-        <h2 class="text-2xl font-semibold mb-4 text-center">Event Details</h2>
-        <div class="max-w-2xl mx-auto bg-pink-50 rounded-lg shadow p-6 mb-8">
-          <p class="mb-2"><strong>Date:</strong> December 28, 2025</p>
-          <p class="mb-2"><strong>Time:</strong> 10:30 PM</p>
-          <p class="mb-4"><strong>Venue:</strong> Club 6 Convention Centre , Pallakad , Kerala </p>
-          <div class="mb-4 rounded-lg overflow-hidden">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3660531858686!2d76.66750187451724!3d10.78325065906886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba86f2fadabcf77%3A0x7c6eb02b0497e844!2sClub%206%20Convention%20Centre!5e0!3m2!1sen!2sin!4v1748628599230!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-          <div class="flex flex-col gap-4">
-            <a href="https://maps.app.goo.gl/rbTStGGJJgwphYwcA" target="_blank" rel="noopener" class="px-4 py-2 bg-green-600 text-white rounded shadow hover:bg-green-700 transition text-center">Open in Google Maps</a>
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Ceremony&dates=20251231T180000/20251231T220000&details=Our+special+day!&location=Wedding+Venue+Address" target="_blank" rel="noopener" class="px-4 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-700 transition text-center">Add to Google Calendar</a>
-            <a href="https://wa.me/?text=Join%20us%20for%20%5BBride's%20Name%5D%20%26%20%5BGroom's%20Name%5D's%20wedding%20on%20December%2031%2C%202025%20at%206%3A00%20PM!%20Venue%3A%20Wedding%20Venue%20Address" target="_blank" rel="noopener" class="px-4 py-2 bg-green-500 text-white rounded shadow hover:bg-green-600 transition text-center">Share on WhatsApp</a>
+  <!-- Welcome Section (top, gradient background or image) -->
+  <section id="welcome-section" class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-pink-100 to-white p-6 bg-center bg-cover">
+    <!--
+      To add a background image in the future, simply update the inline style:
+      style="background-image: url('your-image.jpg');"
+      The pink gradient will show if no image is set.
+    -->
+    <h1 class="text-4xl sm:text-5xl font-bold mb-4 text-pink-700">Arundhati &amp; Nishit</h1>
+    <p class="text-lg mb-6">We're getting married!</p>
+    <div class="bg-white rounded-xl shadow-lg p-6 mb-6 w-full max-w-xs flex flex-col items-center">
+      <span class="text-gray-600 mb-2">Countdown to our big day:</span>
+      <div id="countdown" class="text-2xl font-mono text-pink-600">Loading...</div>
+    </div>
+    <p class="mt-4 text-base text-pink-700 font-semibold animate-bounce">Scroll down below for details</p>
+  </section>
+  <!-- Main Content Section (below sticky header, with background image) -->
+  <div class="main-bg">
+    <div class="bg-overlay min-h-screen">
+      <!-- Sticky header for all other sections -->
+      <header class="sticky top-0 z-40 bg-white text-center py-4 shadow-lg flex flex-col items-center">
+        <div class="flex items-center justify-center gap-2">
+           <span class="inline-block w-10 h-10">
+            <!-- Simple SVG wedding band icon -->
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="20" cy="25" rx="14" ry="8" fill="#FBB6CE" stroke="#DB2777" stroke-width="2"/>
+              <ellipse cx="20" cy="25" rx="10" ry="5" fill="#fff" stroke="#DB2777" stroke-width="1.5"/>
+              <circle cx="20" cy="13" r="4" fill="#FDE68A" stroke="#F59E42" stroke-width="2"/>
+              <ellipse cx="20" cy="25" rx="14" ry="8" fill="none" stroke="#DB2777" stroke-width="2"/>
+            </svg>
+          </span>
+          <div>
+            <h1 class="text-3xl font-bold tracking-wide text-pink-700">Arundhati &amp; Nishit</h1>
+            <p class="text-base mt-1 text-pink-700">We're getting married!</p>
           </div>
         </div>
-      </section>
-      <div class="flex justify-center">
-        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-pink-200 to-pink-400 flex items-center justify-center shadow-lg animate-bounce">
-          <span class="text-3xl">🎉</span>
-        </div>
-      </div>
-      <section class="px-4 animate-fadein">
-        <h2 class="text-2xl font-semibold mb-4 text-center">RSVP</h2>
-        <div class="max-w-2xl mx-auto bg-white rounded-lg shadow p-6">
-          <p class="mb-4">Please let us know if you can join us on our special day!</p>
-          <div class="rounded-lg overflow-hidden">
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSejs78AUHcSraq9oXf7lgQvlCYhZa32TPKjU5YsIjcKgGYXdg/viewform?embedded=true" width="640" height="665" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe> 
+      </header>
+      <div class="space-y-12 pb-8">
+        <section class="px-4 animate-fadein pt-36">
+          <h2 class="text-2xl font-semibold mb-4 text-center">Event Details</h2>
+          <div class="max-w-2xl mx-auto bg-pink-50 rounded-lg shadow p-6 mb-8">
+            <p class="mb-2"><strong>Date:</strong> December 28, 2025</p>
+            <p class="mb-2"><strong>Time:</strong> 10:30 PM</p>
+            <p class="mb-4"><strong>Venue:</strong> Club 6 Convention Centre , Pallakad , Kerala </p>
+            <div class="mb-4 rounded-lg overflow-hidden">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3660531858686!2d76.66750187451724!3d10.78325065906886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba86f2fadabcf77%3A0x7c6eb02b0497e844!2sClub%206%20Convention%20Centre!5e0!3m2!1sen!2sin!4v1748628599230!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="flex flex-col gap-4">
+              <a href="https://maps.app.goo.gl/rbTStGGJJgwphYwcA" target="_blank" rel="noopener" class="px-4 py-2 bg-green-600 text-white rounded shadow hover:bg-green-700 transition text-center flex items-center justify-center gap-2">
+                <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
+                Open in Google Maps
+              </a>
+              <a href="https://calendar.app.google/w4jFKpJJ3cxzeNjQA" target="_blank" rel="noopener" class="px-4 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-700 transition text-center flex items-center justify-center gap-2">
+                <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                Add to Google Calendar
+              </a>
+              <a href="https://api.whatsapp.com/send?text=%F0%9F%92%96%20You're%20invited!%20Join%20us%20for%20Arundhati%20%26%20Nishit's%20wedding%20celebration.%0A%0A%F0%9F%93%85%20Date%3A%20December%2028%2C%202025%0A%F0%9F%95%92%20Time%3A%2010%3A30%20PM%0A%F0%9F%8F%9E%EF%B8%8F%20Venue%3A%20Club%206%20Convention%20Centre%2C%20Pallakad%2C%20Kerala%0A%0A%E2%9C%8D%EF%B8%8F%20RSVP%20on%20our%20wedding%20page%3A%20https%3A%2F%2Fchaotic-carni.github.io%2Fwedding%2F%0A%0ACan't%20wait%20to%20celebrate%20with%20you!%20%F0%9F%92%95" target="_blank" rel="noopener" class="px-4 py-2 bg-green-500 text-white rounded shadow hover:bg-green-600 transition text-center flex items-center justify-center gap-2">
+                <svg class="w-5 h-5 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M20.52 3.48A12 12 0 0 0 3.48 20.52a12 12 0 0 0 17.04-17.04zm-8.52 17c-1.85 0-3.63-.5-5.18-1.44l-.37-.22-3.07.81.82-2.99-.24-.38A9.96 9.96 0 1 1 12 21zm5.2-7.2c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.34.42-.51.14-.17.18-.29.28-.48.09-.19.05-.36-.02-.5-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.62-.47-.16-.01-.36-.01-.56-.01-.19 0-.5.07-.76.34-.26.27-1 1-.97 2.43.03 1.43 1.03 2.81 1.18 3.01.15.2 2.03 3.1 4.93 4.23.69.28 1.23.45 1.65.58.69.22 1.32.19 1.81.12.55-.08 1.65-.67 1.89-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33z"/></svg>
+                Share on WhatsApp
+              </a>
+            </div>
+          </div>
+        </section>
+        <div class="flex justify-center">
+          <div class="w-16 h-16 rounded-full bg-gradient-to-br from-pink-200 to-pink-400 flex items-center justify-center shadow-lg animate-bounce">
+            <span class="text-3xl">🎉</span>
           </div>
         </div>
-      </section>
-      <footer class="py-6 text-center text-gray-500 bg-white border-t mt-8">
-        <p>&copy; 2025 Arundhati &amp; Nishit. All rights reserved.</p>
-        <p class="text-xs mt-2">Website generated with ❤️ | Replace all placeholder content before publishing.</p>
-      </footer>
+        <section class="px-4 animate-fadein">
+          <h2 class="text-2xl font-semibold mb-4 text-center">RSVP</h2>
+          <div class="max-w-2xl mx-auto bg-white rounded-lg shadow p-6">
+            <p class="mb-4">Please let us know if you can join us on our special day!</p>
+            <!-- Responsive Google Form container -->
+            <div class="w-full overflow-x-auto">
+              <div class="relative" style="padding-top: 140%;">
+                <iframe class="absolute top-0 left-0 w-full h-full min-h-[500px] rounded-lg" src="https://docs.google.com/forms/d/e/1FAIpQLSejs78AUHcSraq9oXf7lgQvlCYhZa32TPKjU5YsIjcKgGYXdg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" allowfullscreen loading="lazy">Loading…</iframe>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   </div>
   <!-- Countdown Timer Script -->
