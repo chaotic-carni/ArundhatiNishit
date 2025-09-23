@@ -1,244 +1,210 @@
-<!--
-  Wedding Website - Placeholder Content
-  Replace names, dates, locations, and URLs as needed.
--->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arundhati & Nishit's Wedding</title>
-  <!-- Favicon: Wedding logo (interlocked rings) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='8' cy='16' r='4' stroke='%23DB2777' stroke-width='2' fill='%23fff'/%3E%3Ccircle cx='16' cy='16' r='4' stroke='%23FBB6CE' stroke-width='2' fill='%23fff'/%3E%3Cpath d='M12 16a4 4 0 0 1 4-4' stroke='%23DB2777' stroke-width='2' fill='none'/%3E%3C/svg%3E">
-  <!-- Tailwind CSS CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Arundhati & Nishit — Wedding Invitation</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
   <style>
-    /* Remove the footer bar by hiding it */
-    footer {
-      display: none !important;
+    :root { --accent:#D6A86A; --cream:#FFF6ED; --trans-white:rgba(255,255,255,0.18); --btn-radius:12px; }
+    html,body { margin:0; background:#000; color:#fff; font-family:'Poppins',sans-serif; }
+    .bg-video { position:fixed; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+    .overlay { position:fixed; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.64)); z-index:1; }
+    .name-script { font-family:'Great Vibes',serif; font-size:3rem; color:var(--cream); text-shadow:0 6px 18px rgba(0,0,0,.45); text-align:center; }
+    .glass { background:rgba(255,255,255,.05); backdrop-filter:blur(6px); border-radius:14px; padding:14px; }
+    .btn-default { background:var(--trans-white); color:#111; border-radius:var(--btn-radius); padding:10px 14px; display:inline-flex; gap:8px; align-items:center; font-weight:600; border:1px solid rgba(255,255,255,.12); }
+    .btn-cal { background:#1e40af; color:#fff; padding:10px 14px; border-radius:var(--btn-radius); display:inline-flex; gap:8px; align-items:center; }
+    .btn-wa { background:#16a34a; color:#fff; padding:10px 14px; border-radius:var(--btn-radius); display:inline-flex; gap:8px; align-items:center; }
+    .rsvp-card { background:rgba(255,255,255,.12); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,.18); border-radius:12px; padding:16px; }
+    .form-input { width:100%; padding:10px 12px; border-radius:8px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); color:#fff; }
+    .form-input::placeholder { color:rgba(255,255,255,.8); }
+    #soundToggle { position:fixed; top:14px; right:14px; z-index:9999; width:48px; height:48px; border-radius:9999px; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,.6); border:1px solid rgba(255,255,255,.28); color:#fff; cursor:pointer; }
+    #soundToggle i { font-size:1.2rem; }
+    main { position:relative; z-index:10; max-width:680px; margin:0 auto; padding:28px 16px 60px; display:flex; flex-direction:column; gap:18px; }
+    @media (max-width:640px){ .name-script{ font-size:2.4rem; } }
+
+    /* Tutorial bubble */
+    #soundTutorial {
+      position: fixed;
+      top: 70px; right: 70px; z-index:20000;
+      background: rgba(0,0,0,0.75);
+      color: var(--cream);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      max-width: 180px;
+      text-align: center;
+      animation: fadeIn 0.6s ease-out;
     }
-    body {
-      min-height: 100vh;
-      min-width: 100vw;
-      background: #fff;
-    }
-    .main-bg {
-      background: url('wedding.jpg') top center repeat;
-      background-size: 100vw auto;
-      min-height: 100vh;
-      width: 100vw;
-      /* Remove margin-top so content is not shifted */
-    }
-    /* Overlay for readability */
-    .bg-overlay {
-      background: rgba(255, 255, 255, 0.19);
-      backdrop-filter: blur(0.5px);
-    }
-    @media (max-width: 640px) {
-      .main-bg {
-        background-size: 100vw auto;
-        background-position: top center;
-        background-repeat: repeat-y;
-        position: relative;
-      }
-      .main-bg::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: rgba(255,255,255,0.6); /* dim the image */
-        pointer-events: none;
-        z-index: 1;
-      }
-      .bg-overlay {
-        position: relative;
-        z-index: 2;
-      }
-    }
-    /* Custom scrollbar styles for aesthetic fit */
-    ::-webkit-scrollbar {
-      width: 10px;
-      background: #fce7f3; /* light pink */
-    }
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(135deg, #fbb6ce 0%, #db2777 100%);
-      border-radius: 8px;
-      border: 2px solid #fff;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(135deg, #db2777 0%, #fbb6ce 100%);
-    }
-    /* For Firefox */
-    html {
-      scrollbar-width: thin;
-      scrollbar-color: #db2777 #fce7f3;
+    #soundTutorial.hide { animation: fadeOut 0.6s ease-in forwards; }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes fadeOut { from{opacity:1} to{opacity:0; visibility:hidden} }
+    #soundTutorial::after {
+      content:"";
+      position:absolute;
+      bottom:-10px; right:20px;
+      border-width:10px 10px 0 10px;
+      border-style:solid;
+      border-color:rgba(0,0,0,0.75) transparent transparent transparent;
     }
   </style>
 </head>
-<body class="text-gray-900 font-sans overflow-x-hidden">
-  <!-- Single column layout for all devices -->
-  <!-- Welcome Section (top, gradient background or image) -->
-  <section id="welcome-section" class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-pink-100 to-white p-6 bg-center bg-cover">
-    <!--
-      To add a background image in the future, simply update the inline style:
-      style="background-image: url('your-image.jpg');"
-      The pink gradient will show if no image is set.
-    -->
-    <h1 class="text-4xl sm:text-5xl font-bold mb-4 text-pink-700">Arundhati &amp; Nishit</h1>
-    <p class="text-lg mb-6">We're getting married!</p>
-    <div class="bg-white rounded-xl shadow-lg p-6 mb-6 w-full max-w-xs flex flex-col items-center">
-      <span class="text-gray-600 mb-2">Countdown to our big day:</span>
-      <div id="countdown" class="text-2xl font-mono text-pink-600">Loading...</div>
-    </div>
-    <p class="mt-4 text-base text-pink-700 font-semibold animate-bounce">Scroll down below for details</p>
-  </section>
-  <!-- Main Content Section (below sticky header, with background image) -->
-  <div class="main-bg">
-    <div class="bg-overlay min-h-screen">
-      <!-- Sticky header for all other sections -->
-      <header class="sticky top-0 z-40 bg-white text-center py-4 shadow-lg flex flex-col items-center">
-        <div class="flex items-center justify-center gap-2">
-           <span class="inline-block w-10 h-10">
-            <!-- Simple SVG wedding band icon -->
-            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="20" cy="25" rx="14" ry="8" fill="#FBB6CE" stroke="#DB2777" stroke-width="2"/>
-              <ellipse cx="20" cy="25" rx="10" ry="5" fill="#fff" stroke="#DB2777" stroke-width="1.5"/>
-              <circle cx="20" cy="13" r="4" fill="#FDE68A" stroke="#F59E42" stroke-width="2"/>
-              <ellipse cx="20" cy="25" rx="14" ry="8" fill="none" stroke="#DB2777" stroke-width="2"/>
-            </svg>
-          </span>
-          <div>
-            <h1 class="text-3xl font-bold tracking-wide text-pink-700">Arundhati &amp; Nishit</h1>
-            <p class="text-base mt-1 text-pink-700">We're getting married!</p>
-          </div>
-        </div>
-      </header>
-      <div class="space-y-12 pb-8">
-        <section class="px-4 animate-fadein pt-36">
-          <h2 class="text-2xl font-semibold mb-4 text-center">Event Details</h2>
-          <div class="max-w-2xl mx-auto bg-pink-50 rounded-lg shadow p-6 mb-8">
-            <p class="mb-2"><strong>Date:</strong> December 28, 2025</p>
-            <p class="mb-2"><strong>Time:</strong> 10:30 PM</p>
-            <p class="mb-4"><strong>Venue:</strong> Club 6 Convention Centre , Pallakad , Kerala </p>
-            <div class="mb-4 rounded-lg overflow-hidden">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3660531858686!2d76.66750187451724!3d10.78325065906886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba86f2fadabcf77%3A0x7c6eb02b0497e844!2sClub%206%20Convention%20Centre!5e0!3m2!1sen!2sin!4v1748628599230!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            <div class="flex flex-col gap-4">
-              <a href="https://maps.app.goo.gl/rbTStGGJJgwphYwcA" target="_blank" rel="noopener" class="px-4 py-2 bg-green-600 text-white rounded shadow hover:bg-green-700 transition text-center flex items-center justify-center gap-2">
-                <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
-                Open in Google Maps
-              </a>
-              <a href="https://calendar.app.google/w4jFKpJJ3cxzeNjQA" target="_blank" rel="noopener" class="px-4 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-700 transition text-center flex items-center justify-center gap-2">
-                <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                Add to Google Calendar
-              </a>
-              <a href="https://api.whatsapp.com/send?text=%F0%9F%92%96%20You're%20invited!%20Join%20us%20for%20Arundhati%20%26%20Nishit's%20wedding%20celebration.%0A%0A%F0%9F%93%85%20Date%3A%20December%2028%2C%202025%0A%F0%9F%95%92%20Time%3A%2010%3A30%20PM%0A%F0%9F%8F%9E%EF%B8%8F%20Venue%3A%20Club%206%20Convention%20Centre%2C%20Pallakad%2C%20Kerala%0A%0A%E2%9C%8D%EF%B8%8F%20RSVP%20on%20our%20wedding%20page%3A%20https%3A%2F%2Fchaotic-carni.github.io%2Fwedding%2F%0A%0ACan't%20wait%20to%20celebrate%20with%20you!%20%F0%9F%92%95" target="_blank" rel="noopener" class="px-4 py-2 bg-green-500 text-white rounded shadow hover:bg-green-600 transition text-center flex items-center justify-center gap-2">
-                <svg class="w-5 h-5 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M20.52 3.48A12 12 0 0 0 3.48 20.52a12 12 0 0 0 17.04-17.04zm-8.52 17c-1.85 0-3.63-.5-5.18-1.44l-.37-.22-3.07.81.82-2.99-.24-.38A9.96 9.96 0 1 1 12 21zm5.2-7.2c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.34.42-.51.14-.17.18-.29.28-.48.09-.19.05-.36-.02-.5-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.62-.47-.16-.01-.36-.01-.56-.01-.19 0-.5.07-.76.34-.26.27-1 1-.97 2.43.03 1.43 1.03 2.81 1.18 3.01.15.2 2.03 3.1 4.93 4.23.69.28 1.23.45 1.65.58.69.22 1.32.19 1.81.12.55-.08 1.65-.67 1.89-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33z"/></svg>
-                Share on WhatsApp
-              </a>
-            </div>
-          </div>
-        </section>
-        <div class="flex justify-center">
-          <div class="w-16 h-16 rounded-full bg-gradient-to-br from-pink-200 to-pink-400 flex items-center justify-center shadow-lg animate-bounce">
-            <span class="text-3xl">🎉</span>
-          </div>
-        </div>
-        <section class="px-4 animate-fadein">
-          <h2 class="text-2xl font-semibold mb-4 text-center">RSVP</h2>
-          <div class="max-w-2xl mx-auto bg-white rounded-lg shadow p-6">
-            <p class="mb-4">Please let us know if you can join us on our special day!</p>
-            <!-- Responsive Google Form container -->
-            <div class="w-full overflow-x-auto">
-              <div class="relative" style="padding-top: 140%;">
-                <iframe class="absolute top-0 left-0 w-full h-full min-h-[500px] rounded-lg" src="https://docs.google.com/forms/d/e/1FAIpQLSejs78AUHcSraq9oXf7lgQvlCYhZa32TPKjU5YsIjcKgGYXdg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" allowfullscreen loading="lazy">Loading…</iframe>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  </div>
-  <!-- Countdown Timer Script -->
-  <script>
-    // Set the target wedding date (replace with your actual date/time)
-    const weddingDate = new Date('December 28, 2025 10:30:00').getTime();
-    const countdownEl = document.getElementById('countdown');
+<body>
 
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = weddingDate - now;
-      if (distance <= 0) {
-        countdownEl.textContent = 'The Wedding Has Begun!';
-        clearInterval(timer);
-        return;
-      }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
-    updateCountdown();
-    const timer = setInterval(updateCountdown, 1000);
-  </script>
-  <script src="main.js"></script>
-  <script>
-    // Desktop navigation logic
-    const sections = Array.from(document.querySelectorAll('.section'));
-    const leftPanel = document.getElementById('leftNavPanel');
-    const rightPanel = document.getElementById('rightNavPanel');
-    let currentSection = 0;
-    function updateDesktopNav(idx) {
-      // Enable/disable pointer events and fade panels
-      if (idx === 0) {
-        leftPanel.style.pointerEvents = 'none';
-        leftPanel.style.opacity = '0.2';
-      } else {
-        leftPanel.style.pointerEvents = 'auto';
-        leftPanel.style.opacity = '1';
-      }
-      if (idx === sections.length - 1) {
-        rightPanel.style.pointerEvents = 'none';
-        rightPanel.style.opacity = '0.2';
-      } else {
-        rightPanel.style.pointerEvents = 'auto';
-        rightPanel.style.opacity = '1';
-      }
-    }
-    function showSection(idx) {
-      sections.forEach((sec, i) => {
-        sec.classList.toggle('hidden', i !== idx);
-      });
-      updateDesktopNav(idx);
-    }
-    if (window.innerWidth >= 768) {
-      showSection(currentSection);
-      leftPanel.addEventListener('click', function() {
-        if (currentSection > 0) {
-          currentSection--;
-          showSection(currentSection);
-        }
-      });
-      rightPanel.addEventListener('click', function() {
-        if (currentSection < sections.length - 1) {
-          currentSection++;
-          showSection(currentSection);
-        }
-      });
-      document.querySelectorAll('a[href^="#"]').forEach(link => {
-        link.addEventListener('click', e => {
-          const href = link.getAttribute('href');
-          if (href.startsWith('#')) {
-            e.preventDefault();
-            const idx = sections.findIndex(sec => sec.id === href.slice(1));
-            if (idx !== -1) {
-              currentSection = idx;
-              showSection(currentSection);
-            }
-          }
-        });
-      });
-    }
-  </script>
+  <!-- Background video -->
+  <video id="bgVideo" class="bg-video" autoplay loop muted playsinline preload="auto" poster="poster.jpg">
+    <source src="engagement-reel.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+
+  <!-- Tutorial bubble -->
+  <div id="soundTutorial">👆 Tap the speaker icon to enable sound</div>
+
+  <!-- Sound toggle -->
+  <button id="soundToggle" aria-label="Toggle sound"><i id="soundIcon" class="bi bi-volume-mute"></i></button>
+
+  <main>
+    <!-- Header -->
+    <header style="text-align:center;">
+      <p style="letter-spacing:2px;font-size:.85rem;text-transform:uppercase;opacity:.9;margin:0;">You're invited</p>
+      <div class="name-script" style="margin:8px 0;">Arundhati &amp; Nishit</div>
+      <p style="margin:0;color:rgba(255,255,255,0.9)">With the blessings of our families</p>
+    </header>
+
+    <!-- Countdown -->
+    <section class="glass" style="text-align:center;">
+      <div style="font-size:.8rem;text-transform:uppercase;opacity:.85">Countdown</div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:12px;">
+        <div><div id="cdDays" style="font-size:1.5rem;font-weight:700;">—</div><div style="font-size:.8rem;">Days</div></div>
+        <div><div id="cdHours" style="font-size:1.5rem;font-weight:700;">—</div><div style="font-size:.8rem;">Hours</div></div>
+        <div><div id="cdMinutes" style="font-size:1.5rem;font-weight:700;">—</div><div style="font-size:.8rem;">Minutes</div></div>
+      </div>
+    </section>
+
+    <!-- Wedding -->
+    <section class="glass" style="text-align:center;">
+      <div style="font-size:1.3rem;font-weight:700;">Wedding Ceremony</div>
+      <div style="margin-top:8px;opacity:.9;">28th December 2025 · 10:00 AM</div>
+      <div style="margin-top:12px;font-weight:700;">
+        Club 6 <a href="https://maps.app.goo.gl/AYYvx3EvXeXmdDjd6" target="_blank" rel="noreferrer" style="margin-left:10px;color:inherit;background:rgba(255,255,255,.08);padding:6px 10px;border-radius:9999px">Map</a>
+      </div>
+      <div style="font-size:.86rem;opacity:.85;margin-top:6px;">Kallepully Road, Ramanathapuram, Palakkad - 678001</div>
+
+      <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px;">
+        <a href="https://calendar.app.google/yiY7bvqTEEnrJBVr8" target="_blank" class="btn-cal"><i class="bi bi-calendar-event"></i> Add Event</a>
+        <button id="whatsappShare" class="btn-wa"><i class="bi bi-whatsapp"></i> Share</button>
+        <button id="downloadSaveDate" class="btn-default"><i class="bi bi-card-image"></i> Save-the-date</button>
+        <button id="scrollToRSVP" class="btn-default"><i class="bi bi-check2-circle"></i> RSVP</button>
+      </div>
+    </section>
+
+
+    <!-- RSVP -->
+    <section id="rsvp" class="rsvp-card">
+      <div style="text-align:center;font-weight:700;margin-bottom:10px">RSVP</div>
+      <form id="rsvpForm" onsubmit="return false;" style="display:flex;flex-direction:column;gap:10px;">
+        <input id="r_name" class="form-input" type="text" placeholder="Your good name" required>
+        <div style="text-align:center;">
+          <div style="font-size:.95rem;opacity:.9;margin-bottom:6px;">Will you attend?</div>
+          <label><input type="radio" name="attend" value="Yes" checked> Yes</label>
+          <label style="margin-left:16px;"><input type="radio" name="attend" value="No"> No</label>
+        </div>
+        <div>
+          <label style="font-size:.9rem;opacity:.9;margin-bottom:6px;">Number of guests (including you)</label>
+          <input id="r_guests" class="form-input" type="number" min="1" value="1" required>
+        </div>
+        <div style="display:flex;justify-content:center;gap:10px;">
+          <button id="submitRsvp" class="btn-default" style="padding:10px 18px;"><i class="bi bi-check2-circle"></i> Send RSVP</button>
+          <button id="resetRsvp" class="btn-default" style="padding:10px 18px;background:transparent;color:#fff;">Reset</button>
+        </div>
+        <div id="rsvpMsg" style="text-align:center;margin-top:6px;min-height:20px;font-size:.95rem;"></div>
+      </form>
+    </section>
+
+    <section class="glass" style="text-align:center;">
+      <div style="opacity:.9;">Both wish you good health and warmly request your presence on this auspicious occasion. 🙏</div>
+    </section>
+  </main>
+
+  <canvas id="stCanvas" width="1080" height="1920" style="display:none"></canvas>
+
+<script>
+/* Countdown */
+const WEDDING_ISO="2025-12-28T10:00:00+05:30";
+function updateCountdown(){const n=Date.now(),t=new Date(WEDDING_ISO).getTime(),d=Math.max(0,t-n);document.getElementById('cdDays').innerText=Math.floor(d/(1000*60*60*24));document.getElementById('cdHours').innerText=Math.floor((d/(1000*60*60))%24);document.getElementById('cdMinutes').innerText=Math.floor((d/(1000*60))%60);}
+updateCountdown();setInterval(updateCountdown,60000);
+
+/* WhatsApp Share */
+document.getElementById('whatsappShare').addEventListener('click',()=>{
+  const text=`💖 You're invited! Join us for Arundhati & Nishit's wedding celebration.
+
+📅 Date: December 28, 2025
+🕒 Time: 10:00 AM
+🏞 Venue: Club 6 Convention Centre, Palakkad, Kerala
+🗺 Google Maps: https://maps.app.goo.gl/AYYvx3EvXeXmdDjd6
+
+✍ RSVP on our wedding page: https://arundhatinishit.netlify.app/
+
+Can't wait to celebrate with you! ✨🙏`;
+  window.open(`https://wa.me/?text=${encodeURIComponent(text)}`,'_blank');
+});
+
+/* Save-the-date */
+document.getElementById('downloadSaveDate').addEventListener('click', () => {
+  const a = document.createElement('a');
+  a.href = 'save-the-date.png';   // make sure this file is in the same folder as index.html
+  a.download = 'save-the-date.png';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+});
+
+
+/* RSVP (GET to Apps Script) */
+const SHEET_URL="https://script.google.com/macros/s/AKfycbxImL4UpuNmaAtlvmcXZsWoYmf6Ef4O57EbCs-gJbfii7cbP9Z2yBQB1BE21VIN4m_33A/exec";
+document.getElementById('submitRsvp').addEventListener('click',async e=>{
+  e.preventDefault();
+  const name=document.getElementById('r_name').value.trim();
+  const guests=document.getElementById('r_guests').value;
+  const attend=document.querySelector('input[name="attend"]:checked').value;
+  const msg=document.getElementById('rsvpMsg');
+  if(!name||!guests){msg.style.color='#f87171';msg.innerText='Please fill all fields.';return;}
+  msg.style.color='#fff';msg.innerText='Sending...';
+  try{await fetch(`${SHEET_URL}?name=${encodeURIComponent(name)}&attend=${attend}&guests=${guests}`,{method:'GET',mode:'no-cors'});msg.style.color='#bbf7d0';msg.innerText='Thank you — RSVP received ✨';document.getElementById('r_name').value='';document.getElementById('r_guests').value='1';}
+  catch(err){msg.style.color='#f87171';msg.innerText='Error saving RSVP';}
+});
+document.getElementById('resetRsvp').addEventListener('click',e=>{e.preventDefault();document.getElementById('r_name').value='';document.getElementById('r_guests').value='1';document.getElementById('rsvpMsg').innerText='';});
+document.getElementById('scrollToRSVP').addEventListener('click',()=>document.getElementById('rsvp').scrollIntoView({behavior:'smooth'}));
+
+/* Video + Sound with tutorial bubble */
+const bgVideo=document.getElementById('bgVideo');
+const soundToggle=document.getElementById('soundToggle');
+const soundIcon=document.getElementById('soundIcon');
+const tutorial=document.getElementById('soundTutorial');
+const DEFAULT_VOL=0.12;
+let soundEnabled=false;
+
+function updateSoundIcon(){if(bgVideo.muted||bgVideo.volume===0){soundIcon.className='bi bi-volume-mute';}else{soundIcon.className='bi bi-volume-up';}}
+
+async function tryEnableSound(){
+  try{bgVideo.muted=false;bgVideo.volume=DEFAULT_VOL;await bgVideo.play();soundEnabled=true;tutorial.classList.add('hide');setTimeout(()=>tutorial.remove(),700);}catch(err){bgVideo.muted=true;soundEnabled=false;}updateSoundIcon();
+}
+
+// Always start muted autoplay
+bgVideo.muted=true;bgVideo.play().catch(()=>{});
+
+// First pointerdown anywhere also enables sound
+document.addEventListener('pointerdown',()=>{if(!soundEnabled) tryEnableSound();},{once:true});
+
+// Sound toggle button
+soundToggle.addEventListener('click',async e=>{e.preventDefault();if(!soundEnabled){await tryEnableSound();}else{if(bgVideo.muted||bgVideo.volume===0){bgVideo.muted=false;bgVideo.volume=DEFAULT_VOL;await bgVideo.play().catch(()=>{});}else{bgVideo.muted=true;}updateSoundIcon();}});
+
+updateSoundIcon();
+</script>
 </body>
 </html>
