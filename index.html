@@ -71,9 +71,9 @@
   <main>
     <!-- Header -->
     <header style="text-align:center;">
-      <p style="letter-spacing:2px;font-size:.85rem;text-transform:uppercase;opacity:.9;margin:0;">You're invited</p>
+      <p style="letter-spacing:2px;font-size:.85rem;text-transform:uppercase;opacity:.95;margin:0;">You're Invited</p>
+      <p style="margin:6px 0 0;color:rgba(255,255,255,0.9);font-size:0.98rem;">With the blessings of our families</p>
       <div class="name-script" style="margin:8px 0;">Arundhati &amp; Nishit</div>
-      <p style="margin:0;color:rgba(255,255,255,0.9)">With the blessings of our families</p>
     </header>
 
     <!-- Countdown -->
@@ -89,7 +89,7 @@
     <!-- Wedding -->
     <section class="glass" style="text-align:center;">
       <div style="font-size:1.3rem;font-weight:700;">Wedding Ceremony</div>
-      <div style="margin-top:8px;opacity:.9;">28th December 2025 · 10:00 AM</div>
+      <div style="margin-top:8px;opacity:.9;">28th December 2025 · 10:30 AM</div>
       <div style="margin-top:12px;font-weight:700;">
         Club 6 <a href="https://maps.app.goo.gl/AYYvx3EvXeXmdDjd6" target="_blank" rel="noreferrer" style="margin-left:10px;color:inherit;background:rgba(255,255,255,.08);padding:6px 10px;border-radius:9999px">Map</a>
       </div>
@@ -98,7 +98,7 @@
       <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px;">
         <a href="https://calendar.app.google/yiY7bvqTEEnrJBVr8" target="_blank" class="btn-cal"><i class="bi bi-calendar-event"></i> Add Event</a>
         <button id="whatsappShare" class="btn-wa"><i class="bi bi-whatsapp"></i> Share</button>
-        <button id="downloadSaveDate" class="btn-default"><i class="bi bi-card-image"></i> Save-the-date</button>
+        <button id="downloadSaveDate" class="btn-default"><i class="bi bi-card-image"></i> Invitation card</button>
         <button id="scrollToRSVP" class="btn-default"><i class="bi bi-check2-circle"></i> RSVP</button>
       </div>
     </section>
@@ -127,15 +127,13 @@
     </section>
 
     <section class="glass" style="text-align:center;">
-      <div style="opacity:.9;">Both wish you good health and warmly request your presence on this auspicious occasion. 🙏</div>
+      <div style="opacity:.95;">With the blessings of both families, we joyfully invite you to join us and bless the union of Arundhati &amp; Nishit. Your presence will make the day truly special. 🙏</div>
     </section>
   </main>
 
-  <canvas id="stCanvas" width="1080" height="1920" style="display:none"></canvas>
-
 <script>
 /* Countdown */
-const WEDDING_ISO="2025-12-28T10:00:00+05:30";
+const WEDDING_ISO="2025-12-28T10:30:00+05:30";
 function updateCountdown(){const n=Date.now(),t=new Date(WEDDING_ISO).getTime(),d=Math.max(0,t-n);document.getElementById('cdDays').innerText=Math.floor(d/(1000*60*60*24));document.getElementById('cdHours').innerText=Math.floor((d/(1000*60*60))%24);document.getElementById('cdMinutes').innerText=Math.floor((d/(1000*60))%60);}
 updateCountdown();setInterval(updateCountdown,60000);
 
@@ -144,7 +142,7 @@ document.getElementById('whatsappShare').addEventListener('click',()=>{
   const text=`💖 You're invited! Join us for Arundhati & Nishit's wedding celebration.
 
 📅 Date: December 28, 2025
-🕒 Time: 10:00 AM
+🕒 Time: 10:30 AM
 🏞 Venue: Club 6 Convention Centre, Palakkad, Kerala
 🗺 Google Maps: https://maps.app.goo.gl/AYYvx3EvXeXmdDjd6
 
@@ -154,11 +152,11 @@ Can't wait to celebrate with you! ✨🙏`;
   window.open(`https://wa.me/?text=${encodeURIComponent(text)}`,'_blank');
 });
 
-/* Save-the-date */
+/* Invitation card download */
 document.getElementById('downloadSaveDate').addEventListener('click', () => {
   const a = document.createElement('a');
-  a.href = 'save-the-date.png';   // make sure this file is in the same folder as index.html
-  a.download = 'save-the-date.png';
+  a.href = 'invitation-card.png';   // make sure this file is in the same folder as index.html
+  a.download = 'invitation-card.png';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
